@@ -35,4 +35,16 @@ def inserir_filmes(titulo, genero, ano, avaliacao):
             cursor.close()
             conexao.close()
 
-inserir_filmes("Até o Ùltimo Homem", "Ação", 2018, 10.0)
+def listar_filmes():
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute("SELECT * FROM filmes ORDER BY id")
+            return cursor.fetchall()
+        except Exception as erro:
+            print(f'Erro ao tentar listar os filmes: {erro}')
+        finally:
+            cursor.close()
+            conexao.close()
+
+listar_filmes()
