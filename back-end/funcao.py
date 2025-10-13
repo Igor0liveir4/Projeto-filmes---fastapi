@@ -62,13 +62,13 @@ def atualizar_filme(id_filme, nova_avaliacao):
             cursor.close()
             conexao.close()
 
-def deletar_livro(id_livro):
+def deletar_filme(id_filme):
     conexao, cursor = conectar()
     if conexao:
         try:
             cursor.execute(
                 "DELETE FROM filmes WHERE id = %s",
-                (id_livro,)
+                (id_filme,)
             )
             conexao.commit()
             if cursor.fetchall():
