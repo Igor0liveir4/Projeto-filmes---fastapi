@@ -8,7 +8,7 @@ st.set_page_config(page_title="Gerenciador de Filmes", page_icon="🎬")
 st.title("🎥 Gerenciador de Filmes")
 
 #Menu lateral
-menu = st.sidebar.radio("Navegação", ["Catalogo", "Adicionar filme"])
+menu = st.sidebar.radio("Navegação", ["Catalogo", "Adicionar filme", "Atualizar"])
 
 if menu == "Catalogo":
     st.subheader("Todos os filmes disponiveis")
@@ -38,3 +38,4 @@ elif menu == "Adicionar filme":
             st.success("Filme adicionado com sucesso!")
         else:
             st.error("Erro ao adicionar o filme")
+
