@@ -8,7 +8,7 @@ st.set_page_config(page_title="Gerenciador de Filmes", page_icon="🎬")
 st.title("🎥 Gerenciador de Filmes")
 
 #Menu lateral
-menu = st.sidebar.radio("Navegação", ["Catalogo", "Adicionar filme", "Atualizar"])
+menu = st.sidebar.radio("Navegação", ["Catalogo", "Adicionar filme", "Atualizar filme"])
 
 if menu == "Catalogo":
     st.subheader("Todos os filmes disponiveis")
@@ -39,3 +39,15 @@ elif menu == "Adicionar filme":
         else:
             st.error("Erro ao adicionar o filme")
 
+elif menu == "Atualizar filme":
+    st.subheader("Atualizar filme")
+    avaliacao = st.number_input("Avaliação", min_value=0.0, max_value=10.0, step=0.1)
+    if st.button("Atualizar filme"):
+        dados = {
+            "avaliacao": avaliacao
+        }
+        response = requests.post(f"{API_URL}/filmes", params=dados)
+        if response == 200:
+            st.success("Filme adicionado com sucesso!")
+        else:
+            st.error("Erro ao adicionar o filme")
